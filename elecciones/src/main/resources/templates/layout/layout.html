@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<meta charset="utf-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+	<nav th:fragment="nav">
+		<ul class="flex border-b">
+			<li class="mr-1"><a
+				class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+				th:href="@{/voto/urna}">Votar</a></li>
+			<li class="mr-1"><a
+				class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+				th:href="@{/eleccion/listar}">Lista Elecciones</a></li>
+			<li class="mr-1"><a
+				class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+				th:href="@{/eleccion/guardar}">Nueva Eleccion</a></li>
+			<li class="mr-1"><a
+				class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+				th:href="@{/candidato/listar}">Lista Candidatos</a></li>
+			<li class="mr-1"><a
+				class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+				th:href="@{/candidato/guardar}">Nuevo Candidato</a></li>
+			<li class="mr-1"><a
+				class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+				th:href="@{/estamento/listar}">Lista Estamentos</a></li>
+			<li class="mr-1"><a
+				class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+				th:href="@{/estamento/guardar}">Nuevo Estamento</a></li>
+			<li class="mr-1"><a
+				class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+				th:href="@{/votante/listar}">Lista Votantes</a></li>
+			<li class="mr-1"><a
+				class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+				th:href="@{/votante/guardar}">Nuevo Votante</a></li>
+		</ul>
+	</nav>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Insert title here</title>
+    <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mx-auto px-4 sm:px-8">
+    	<header th:replace="layout/layout :: nav"></header>
+        <div class="py-8">
+            <div>
+                <h2 class="text-2xl font-semibold leading-tight">Lista Estamentos</h2>
+            </div>
+            <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                    <table class="min-w-full leading-normal">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Eleccion
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Nombre
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="item: ${estamentos}">
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center"
+                                    th:text="${item.eleccionBean.nombre}+' | '+${item.eleccionBean.cargo}"></td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center"
+                                    th:text="${item.descripcion}"></td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
+                                    <a class="hover:underline mr-2" th:href="@{'/estamento/editar/'+${item.id}}"><i class="fas fa-pen-alt"></i></a>
+                                    <a class="hover:underline" th:href="@{'/estamento/eliminar/'+${item.id}}"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

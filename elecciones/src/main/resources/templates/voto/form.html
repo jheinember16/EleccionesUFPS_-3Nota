@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<title>Insert title here</title>
+<link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+	integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+	crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container mx-auto px-4 sm:px-8">
+		<header th:replace="layout/layout :: nav"></header>
+		<div class="leading-loose">
+			<form class="max-w-xl m-4 p-10 bg-white rounded shadow-xl"
+				th:action="@{/voto/guardar}" method="post">
+				<p class="text-gray-800 font-medium">Registro de Voto</p>
+				<div class="mt-4">
+					<label class="block text-sm text-gray-00" for="cus_name">Estamento</label>
+					<select name="estamento"
+						class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-red-500 focus:border-red-500 focus:z-10 sm:text-sm">
+						<option th:each="item : ${estamentos}" th:value="${item.id}"
+							th:text="${item.descripcion}" th:if="${item.eleccionBean.id == eleccion.id}">
+					</select>
+				</div>
+
+				<div class="mb-4">
+					<label class="block text-sm text-gray-00" for="cus_name">Votante</label>
+					<select name="votante"
+						class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-red-500 focus:border-red-500 focus:z-10 sm:text-sm">
+						<option th:each="item : ${votantes}" th:value="${item.id}"
+							th:text="${item.documento+' | '+item.nombre}" th:if="${item.eleccionBean.id == eleccion.id}">
+					</select>
+				</div>
+				<div class="text-center mb-4">
+					<h1 class="text-3xl text-red-500 font-medium" th:text="${eleccion.nombre}"></h1>
+					<p>Debes seleccionar al candidato de tu preferencia y confirmar
+						tu voto</p>
+				</div>
+				<div class="text-center mb-4" th:each="item : ${candidatos}" th:if="${item.eleccionBean.id == eleccion.id}">
+					<div class="border p-2 flex flex-col items-center">
+						<div class="w-8/12 mx-auto flex items-center justify-between">
+							<h1 class="text-7xl text-red-500 font-medium" th:text="${item.numero}"></h1>
+							<input type="radio" th:value="${item.id}" name="candidato" id="">
+						</div>
+						<i class="fas fa-user text-9xl mb-2"></i>
+						<p th:text="${item.nombre+' '+item.apellido}"></p>
+					</div>
+				</div>
+				<div class="mb-4">
+					<button
+						class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded"
+						type="submit">Confirmo mi voto</button>
+				</div>
+			</form>
+		</div>
+		<div>
+</body>
+
+</html>
